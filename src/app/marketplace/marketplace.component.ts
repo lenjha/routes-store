@@ -3,6 +3,7 @@ import { Album } from '../album.model';
 import { Router } from '@angular/router';
 import { AlbumService } from '../album.service';
 import { FirebaseListObservable } from 'angularfire2/database';
+import { FirebaseObjectObservable } from 'angularfire2/database';
 
 @Component({
   selector: 'app-marketplace',
@@ -22,7 +23,9 @@ export class MarketplaceComponent implements OnInit {
     this.albums = this.albumService.getAlbums();
   }
 
-  goToDetailPage(clickedAlbum: Album){
+  goToDetailPage(clickedAlbum){
+    //  was originally goToDetailPage(clickedAlbum: Album){
+    // don't forget to remove the specificity for Album (local)
     this.router.navigate(['albums', clickedAlbum.$key]);
   }
 }
